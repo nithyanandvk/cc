@@ -1,0 +1,285 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  color: #d0cece;
+  background-color: #1e1e1e;
+  box-sizing: border-box;
+}
+
+.bg-dark {
+  background-color: #3c3c3c !important;
+}
+
+a {
+  color: #d0cece !important;
+  text-decoration: none;
+}
+.container {
+  flex: 1;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center !important;
+  justify-content: center;
+}
+
+.middle {
+  display: flex;
+  flex-direction: row;
+}
+#sideNav {
+  background-color: #252526;
+}
+
+.phone-nav {
+  background-color: #252526 !important;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23d0cece' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.btn-close {
+  filter: invert(82%) sepia(1%) saturate(0%) hue-rotate(180deg) brightness(90%)
+    contrast(86%);
+}
+
+.btn-close:hover {
+  filter: invert(100%) sepia(6%) saturate(150%) hue-rotate(180deg)
+    brightness(100%) contrast(100%);
+}
+
+footer {
+  background-color: #3c3c3c;
+}
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.mbulogo {
+  height: 40%;
+  width: 50%;
+  margin-bottom: 0.5rem;
+}
+.logos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.uses {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.heading {
+  font-size: 2.1rem;
+  text-align: center;
+}
+
+.card-text {
+  font-size: 1.1rem;
+}
+
+.uses img {
+  height: 15rem !important;
+  width: 18rem !important;
+}
+.faq-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.faq-header {
+  background-color: #007acc;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.faq-body {
+  display: none;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+}
+.objective {
+  text-align: center;
+  font-weight: bold;
+}
+
+.block1 {
+  background-color: #1e1e1e;
+  width: 70%;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4vw;
+}
+
+.block1 span {
+  position: absolute;
+  color: #007acc;
+}
+.block1 span::before {
+  content: "CODING CLUB";
+  animation: words 20s infinite;
+}
+.block1 span::after {
+  content: " ";
+  position: absolute;
+  width: calc(100% + 8px);
+  height: 100%;
+  background-color: #1e1e1e;
+  border-left: 2px solid #007acc;
+  right: -8px;
+  animation: cursor 2s infinite, typing 20s steps(20) infinite;
+}
+
+@keyframes words {
+  0%,
+  20% {
+    content: "CODING CLUB";
+  }
+  21%,
+  40% {
+    content: "CODING CLUB";
+  }
+  41%,
+  60% {
+    content: "CODING CLUB";
+  }
+  61%,
+  80% {
+    content: "CODING CLUB";
+  }
+  81%,
+  100% {
+    content: "CODING CLUB";
+  }
+}
+
+@keyframes cursor {
+  to {
+    border-left: 2px solid #1e1e1e;
+  }
+}
+
+@keyframes typing {
+  10%,
+  15%,
+  30%,
+  35%,
+  50%,
+  55%,
+  70%,
+  75%,
+  90%,
+  95% {
+    width: 0;
+  }
+  5%,
+  20%,
+  25%,
+  40%,
+  45%,
+  60%,
+  65%,
+  80%,
+  85% {
+    width: calc(100% + 8px);
+  }
+}
+@media only screen and (max-width: 768px) {
+  .block1 {
+    font-size: 6vw;
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .block1 {
+    font-size: 8vw;
+    width: 50%;
+    margin-left: 10%;
+  }
+}
+
+.event-main h4 {
+  display: inline;
+}
+.event-main .card {
+  width: 23rem;
+  margin-top: 1rem;
+}
+.event-main img {
+  height: 20rem;
+  width: 95%;
+}
+.event-main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.youtube {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.youtube .video-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+
+}
+
+@media (min-width: 768px) {
+  .youtube .video-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .youtube .video-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+.youtube .video-container {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.youtube .video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.youtube .video-title {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
