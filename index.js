@@ -13,16 +13,20 @@ app.get("/",(req,res)=>{
     res.render("layouts/boilerplate.ejs",{view:"home"});
 });
 
-app.get("/subteams",(req,res)=>{
-    res.render("layouts/boilerplate.ejs",{view:"subteams"});
-});
-
 app.get("/past",(req,res)=>{
     res.render("layouts/boilerplate.ejs",{view:"past"});
 });
 
 app.get("/resources",(req,res)=>{
     res.render("layouts/boilerplate.ejs",{view:"resources"});
+});
+
+app.get("/core",(req,res)=>{
+    res.render("layouts/boilerplate.ejs",{view:"core"});
+});
+
+app.get("/online",(req,res)=>{
+    res.render("layouts/boilerplate.ejs",{view:"online"});
 });
 
 app.listen(port, () => {
