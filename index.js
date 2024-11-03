@@ -29,6 +29,14 @@ app.get("/online",(req,res)=>{
     res.render("layouts/boilerplate.ejs",{view:"online"});
 });
 
+app.get("/gallery",(req,res)=>{
+    res.render("layouts/boilerplate.ejs",{view:"gallery"});
+});
+
+app.get("/upcoming",(req,res)=>{
+    res.render("layouts/boilerplate.ejs",{view:"upcoming"});
+});
+
 app.listen(port, () => {
     console.log("listening on port 3000");
 });

@@ -374,6 +374,43 @@ footer {
   border-radius: 50%;
   border: 5px solid #363a3b;
 }
+
+.teamBoxAnimate:nth-child(2n) {
+  /* border: 2px solid red; */
+  animation: teamBoxAnimateUp 1s ease-in-out;
+}
+
+.teamBoxAnimate:nth-child(2n + 1) {
+  /* border: 2px solid red; */
+  animation: teamBoxAnimateDown 1s ease-in-out;
+}
+
+@keyframes teamBoxAnimateDown {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes teamBoxAnimateUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+.tBoxAnimate {
+  animation: t-box-animation 2s linear;
+  animation-timeline: view();
+}
+
 .w3 {
   background-image: url("/images/virat.jpg");
 }
@@ -490,4 +527,324 @@ footer {
   .button-div {
     margin-top: 8px;
   }
+}
+
+/* card animations */
+
+.pastt .card-animate {
+  position: relative;
+  height: 29%;
+  max-width: 70%;
+  animation: cardAnimationLeftToRight 0.9s ease-in;
+}
+
+.pastt .card-body {
+  height: 0;
+  width: 100%;
+  background: linear-gradient(transparent, rgb(12, 11, 11) 58%);
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  transition: height 0.5s;
+  color: #f0f0f0;
+}
+
+.pastt .card-animate img {
+  transform: scale(1.2);
+  height: 90%;
+  max-width: 85%;
+}
+
+.pastt .card-animate:hover .card-body {
+  height: 100%;
+  backdrop-filter: blur(10px);
+}
+
+.event-main {
+  /* border: 5px solid red; */
+  height: 100%;
+  width: 100%;
+}
+
+.videoItemAnimation:nth-child(2n + 1) {
+  /* border: 2px solid red; */
+  animation: videoItemAnimationLeft 0.6s linear;
+}
+
+.videoItemAnimation:nth-child(2n) {
+  /* border: 2px solid white; */
+  animation: videoItemAnimationRight 0.6s linear;
+}
+
+@keyframes videoItemAnimationLeft {
+  0% {
+    opacity: 0;
+    transform: translatex(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes videoItemAnimationRight {
+  0% {
+    opacity: 0;
+    transform: translatex(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes t-box-animation {
+  0% {
+    opacity: 0;
+    scale: 0.5;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes cardAnimationLeftToRight {
+  0% {
+    transform: translateX(500%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@media (max-width: 1025px) {
+  .event-main {
+    /* border: 5px solid red; */
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3.5rem;
+    padding-left: 2rem;
+  }
+
+  .card-animate img {
+    height: 80%;
+  }
+
+  .card-animate {
+    /* border: 2px solid red; */
+    height: 100%;
+    width: 100%;
+  }
+  .card img {
+    height: 90%;
+    width: 90%;
+  }
+
+  .event-main:nth-child(2n + 1) {
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-width: 426px) {
+  .card img {
+    height: 90%;
+    width: 90%;
+  }
+
+  .event-main {
+    /* border: 5px solid red; */
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-columns: auto;
+    gap: 3.5rem;
+    padding-left: 3.5rem;
+  }
+
+  .event-main:nth-child(2n + 1) {
+    padding-bottom: 2rem;
+  }
+
+  .card-animate {
+    max-width: 75%;
+  }
+}
+
+@media (max-width: 376px) {
+  .event-main {
+    padding-left: 2rem;
+  }
+}
+
+@media (max-width: 321px) {
+  .event-main {
+    padding-left: 0;
+  }
+}
+
+.team-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  width: 95%;
+  max-width: 1200px;
+  margin: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-right: 100px;
+  padding-left: 100px;
+  box-sizing: border-box;
+  border: 3px solid #ccccccf8; /* Thicker, lighter border */
+  border-radius: 15px; /* Rounded corners */
+  text-align: left; /* Align text to the left */
+}
+.team {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.team-member {
+  width: 200px;
+  text-align: center;
+  flex: 1;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.team-member h3 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+
+.role {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.icon {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+@media (max-width: 768px) {
+  .team {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+}
+/* Add slide-in animation to each team member */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.team-member {
+  /* Apply the slide-in animation with a delay to create a cascading effect */
+  opacity: 0;
+  animation: slideIn 0.8s ease forwards;
+}
+
+/* Add delay to each team member for a cascading effect */
+.team-member:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.team-member:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.team-member:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.team-member:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.team-member:nth-child(5) {
+  animation-delay: 1s;
+}
+.team-member:nth-child(6) {
+  animation-delay: 1.2s;
+}
+.team-member:nth-child(7) {
+  animation-delay: 1.4s;
+}
+.team-member:nth-child(8) {
+  animation-delay: 1.6s;
+}
+.team-member:nth-child(9) {
+  animation-delay: 1.8s;
+}
+.team-member:nth-child(10) {
+  animation-delay: 2s;
+}
+
+/* Rotate and scale the profile picture on hover */
+.profile-pic {
+  transition: transform 0.5s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
 }

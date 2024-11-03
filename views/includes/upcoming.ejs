@@ -1,0 +1,196 @@
+<style>
+  .mini-calendar-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #2b2b2b;
+    color: #ddd;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-size: 0.8rem;
+  }
+
+  .calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(
+      7,
+      1fr
+    ); /* 7 columns for each day of the week */
+    gap: 5px;
+  }
+
+  .calendar-day-header {
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    background-color: #444;
+    border-radius: 4px;
+  }
+
+  .calendar-day {
+    text-align: center;
+    padding: 10px;
+    background-color: #444;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .calendar-day:hover {
+    background-color: #555;
+  }
+
+  .event-marker {
+    color: #007acc;
+    font-size: 1.2em;
+    margin-left: 5px;
+  }
+
+  .event-details-container {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #2b2b2b;
+    color: #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .event-details-container h4 {
+    color: #007acc;
+    font-size: 1.2em;
+  }
+  .event-details-container p {
+    font-size: 1em;
+    margin: 0;
+    padding-top: 5px;
+  }
+</style>
+<div class="container original col-lg-10 p-3">
+  <div class="mini-calendar-container m-5" id="calendar-container">
+    <div class="calendar-controls">
+      <button id="prevMonth" class="calendar-nav-button">◀</button>
+      <span id="calendarMonthYear" class="calendar-month-year"></span>
+      <button id="nextMonth" class="calendar-nav-button">▶</button>
+    </div>
+    <div id="calendar" class="calendar-grid"></div>
+
+    <!-- Event Details just below the calendar -->
+    <div id="eventDetailsContainer" class="event-details-container">
+      <h4>Event Details</h4>
+      <p id="eventDetailsText"></p>
+    </div>
+  </div>
+</div>
+<script>
+  function toggleFaq(element) {
+    const body = element.nextElementSibling;
+    const symbol = element.querySelector(".toggle-symbol");
+
+    if (body.style.display === "none" || body.style.display === "") {
+      body.style.display = "block";
+      symbol.textContent = "x";
+    } else {
+      body.style.display = "none";
+      symbol.textContent = "+";
+    }
+  }
+  const clubEvents = [
+    {
+      date: "2024-11-05",
+      name: "Hackathon Kickoff",
+      description: "Join us for the annual hackathon kickoff event!",
+    },
+    {
+      date: "2024-11-15",
+      name: "Coding Workshop",
+      description: "A workshop covering advanced coding techniques.",
+    },
+    {
+      date: "2024-12-01",
+      name: "End of Year Party",
+      description: "Celebrate the year's achievements with us!",
+    },
+  ];
+
+  const calendar = document.getElementById("calendar");
+  const calendarMonthYear = document.getElementById("calendarMonthYear");
+  const eventDetailsText = document.getElementById("eventDetailsText");
+
+  let currentDate = new Date();
+
+  function updateCalendar() {
+    calendar.innerHTML = ""; // Clear previous content
+    eventDetailsText.textContent = ""; // Reset message
+
+    const month = currentDate.toLocaleString("default", { month: "long" });
+    const year = currentDate.getFullYear();
+    calendarMonthYear.textContent = `${month} ${year}`;
+
+    // Day headers
+    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    daysOfWeek.forEach((day) => {
+      const dayHeader = document.createElement("div");
+      dayHeader.classList.add("calendar-day-header");
+      dayHeader.textContent = day;
+      calendar.appendChild(dayHeader);
+    });
+
+    // Get the first day of the month and number of days
+    const firstDayIndex = new Date(year, currentDate.getMonth(), 1).getDay();
+    const daysInMonth = new Date(year, currentDate.getMonth() + 1, 0).getDate();
+
+    // Fill in blank days for the starting offset
+    for (let i = 0; i < firstDayIndex; i++) {
+      const blankDay = document.createElement("div");
+      blankDay.classList.add("calendar-day");
+      calendar.appendChild(blankDay);
+    }
+
+    // Populate the calendar with days and events
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dayElem = document.createElement("div");
+      dayElem.classList.add("calendar-day");
+      dayElem.textContent = day;
+
+      const eventDate = `${year}-${String(currentDate.getMonth() + 1).padStart(
+        2,
+        "0"
+      )}-${String(day).padStart(2, "0")}`;
+      const event = clubEvents.find((e) => e.date === eventDate);
+
+      if (event) {
+        const eventMarker = document.createElement("span");
+        eventMarker.classList.add("event-marker");
+        eventMarker.textContent = "•";
+        dayElem.appendChild(eventMarker);
+        dayElem.title = event.name;
+
+        // Show event details on click
+        dayElem.addEventListener("click", () => {
+          eventDetailsText.innerHTML = `<strong>${event.name}</strong><br>${event.description}`;
+        });
+      }
+
+      calendar.appendChild(dayElem);
+    }
+  }
+
+  document.getElementById("prevMonth").addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    updateCalendar();
+  });
+
+  document.getElementById("nextMonth").addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    updateCalendar();
+  });
+
+  updateCalendar();
+</script>
